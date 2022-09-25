@@ -26,12 +26,17 @@ class ViewController: UIViewController {
 
     @IBAction func sliderAction() {
         setupLabels()
+        setupColor()
     }
     
-    private func setupLabels(){
+    private func setupLabels() {
         valueOfRed.text = (round(sliderRed.value * 100) / 100).formatted()
         valueOfGreen.text = (round(sliderGreen.value * 100) / 100).formatted()
         valueOfBlue.text = (round(sliderBlue.value * 100) / 100).formatted()
+    }
+    
+    private func setupColor() {
+        colorViev.backgroundColor = UIColor.init(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: 1)
     }
 }
 
