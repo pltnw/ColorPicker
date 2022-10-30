@@ -23,10 +23,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         colorViev.layer.cornerRadius = 15
     }
-
-    @IBAction func sliderAction() {
-        setupLabels()
+    
+    @IBAction func sliderAction(_ sender: UISlider) {
         setupColor()
+        
+        switch sender {
+        case sliderRed:
+            valueOfRed.text = string(from: sender)
+        case sliderGreen:
+            valueOfGreen.text = string(from: sender)
+        default:
+            valueOfBlue.text = string(from: sender)
+        }
     }
     
     private func setupLabels() {
