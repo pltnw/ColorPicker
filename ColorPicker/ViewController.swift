@@ -22,21 +22,37 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         colorViev.layer.cornerRadius = 15
+        
+        setupColor()
+        setupLabels()
     }
 
     @IBAction func sliderAction() {
         setupLabels()
         setupColor()
+//        обновляются все лейблы слайдеров при взаимодействии с одним слайдером.
+//        исправить с помощью свитч
+        
+        
     }
     
     private func setupLabels() {
-        valueOfRed.text = (round(sliderRed.value * 100) / 100).formatted()
-        valueOfGreen.text = (round(sliderGreen.value * 100) / 100).formatted()
-        valueOfBlue.text = (round(sliderBlue.value * 100) / 100).formatted()
+        valueOfRed.text = string(from: sliderRed)
+        valueOfGreen.text = string(from: sliderGreen)
+        valueOfBlue.text = string(from: sliderBlue)
     }
     
     private func setupColor() {
-        colorViev.backgroundColor = UIColor.init(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: 1)
+        colorViev.backgroundColor = UIColor (
+            red: CGFloat(sliderRed.value),
+            green: CGFloat(sliderGreen.value),
+            blue: CGFloat(sliderBlue.value),
+            alpha: 1
+        )
+    }
+    
+    private func string(from slider: UISlider) -> String {
+        String(format: "%.2f", slider.value)
     }
 }
 
